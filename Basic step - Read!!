@@ -1,0 +1,19 @@
+Basic step - Read!!
+
+Project ID - concise-isotope-481012-t1
+
+#requirements.txt#
+
+cat <<EOF > requirements.txt
+google-cloud-aiplatform
+google-cloud-storage
+google-cloud-firestore
+google-cloud-secret-manager
+google-cloud-resource-manager
+pandas
+streamlit
+EOF
+
+#RUN Backend#
+uv run fastapi dev main.py
+

@@ -20,12 +20,12 @@
  ***************************************************************************/
 
 export const environment = {
-  production: true,
-  videoGenerationApiURL: '/api/video_generation',
-  imageGenerationApiURL: '/api/image_generation',
-  textGenerationApiURL: '/api/text_generation',
-  fileUploaderApiURL: '/api/file_uploader',
-  storiesStorageApiURL: '/api/story_storage',
-  proxyURL: '', // proxy url is just api/handleRequest for Nodejs server in PROD
-  clientID: '',
+  production: false,
+  videoGenerationApiURL: 'http://localhost:8000/api/video_generation',
+  imageGenerationApiURL: 'http://localhost:8000/api/image_generation',
+  textGenerationApiURL: 'http://localhost:8000/api/text_generation',
+  fileUploaderApiURL: 'http://localhost:8000/api/file_uploader',
+  storiesStorageApiURL: 'http://localhost:8000/api/story_storage',
+  proxyURL: 'http://localhost:8000',
+  clientID: 'YOUR_GOOGLE_CLIENT_ID'
 };

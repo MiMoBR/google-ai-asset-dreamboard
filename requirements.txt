@@ -1,0 +1,7 @@
+google-cloud-aiplatform
+google-cloud-storage
+google-cloud-firestore
+google-cloud-secret-manager
+google-cloud-resource-manager
+pandas
+streamlit
