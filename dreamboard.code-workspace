@@ -1,0 +1,92 @@
+{
+  "folders": [
+    {
+      "path": "backend/app",
+      "name": "🐍 Backend (FastAPI)"
+    },
+    {
+      "path": "frontend/dreamboard",
+      "name": "🅰️ Frontend (Angular)"
+    },
+    {
+      "path": "frontend/server",
+      "name": "⚙️ Proxy Server (NodeJS)"
+    }
+  ],
+  "settings": {
+    "python.defaultInterpreterPath": "${workspaceFolder:🐍 Backend (FastAPI)}/.venv/bin/python",
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true,
+    "python.formatting.provider": "black",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    },
+    "files.exclude": {
+      "**/__pycache__": true,
+      "**/*.pyc": true,
+      "**/node_modules": true,
+      "**/.venv": true,
+      "**/.angular": true
+    },
+    "terminal.integrated.env.osx": {
+      "PROJECT_ID": "${env:PROJECT_ID}",
+      "LOCATION": "${env:LOCATION}",
+      "GCS_BUCKET": "${env:GCS_BUCKET}"
+    }
+  },
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "🐍 Debug FastAPI Backend",
+        "type": "python",
+        "request": "launch",
+        "module": "fastapi",
+        "args": ["dev", "main.py"],
+        "cwd": "${workspaceFolder:🐍 Backend (FastAPI)}",
+        "env": {
+          "PYTHONPATH": "${workspaceFolder:🐍 Backend (FastAPI)}"
+        },
+        "console": "integratedTerminal",
+        "justMyCode": false
+      },
+      {
+        "name": "⚙️ Debug NodeJS Proxy",
+        "type": "node",
+        "request": "launch",
+        "program": "${workspaceFolder:⚙️ Proxy Server (NodeJS)}/server.js",
+        "cwd": "${workspaceFolder:⚙️ Proxy Server (NodeJS)}",
+        "console": "integratedTerminal"
+      },
+      {
+        "name": "🅰️ Debug Angular in Chrome",
+        "type": "chrome",
+        "request": "launch",
+        "url": "http://localhost:4200",
+        "webRoot": "${workspaceFolder:🅰️ Frontend (Angular)}"
+      }
+    ],
+    "compounds": [
+      {
+        "name": "🚀 Debug Full Stack",
+        "configurations": [
+          "🐍 Debug FastAPI Backend",
+          "⚙️ Debug NodeJS Proxy",
+          "🅰️ Debug Angular in Chrome"
+        ]
+      }
+    ]
+  },
+  "extensions": {
+    "recommendations": [
+      "ms-python.python",
+      "ms-python.vscode-pylance",
+      "angular.ng-template",
+      "googlecloudtools.cloudcode",
+      "dbaeumer.vscode-eslint",
+      "esbenp.prettier-vscode",
+      "ms-vscode.vscode-typescript-next"
+    ]
+  }
+}

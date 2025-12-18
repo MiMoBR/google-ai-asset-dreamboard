@@ -29,7 +29,7 @@ describe('FileUploaderComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [FileUploaderComponent],
+      imports: [FileUploaderComponent],
     });
     fixture = TestBed.createComponent(FileUploaderComponent);
     component = fixture.componentInstance;

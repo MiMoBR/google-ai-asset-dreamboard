@@ -78,7 +78,8 @@ if settings.BACKEND_CORS_ORIGINS:
   )
 
 # Include the API router with a defined prefix
-app.include_router(api_router, prefix=settings.API_PREFIX)
+# app.include_router(api_router, prefix=settings.API_PREFIX)
+app.include_router(api_router, prefix="/api")
 
 # Run the Uvicorn server when the script is executed directly
 if __name__ == "__main__":

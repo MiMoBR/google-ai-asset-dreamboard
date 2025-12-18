@@ -17,3 +17,10 @@ EOF
 #RUN Backend#
 uv run fastapi dev main.py
 
+# OAuth client created
+# Client ID
+149502000854-r79ufev4eqe1r5pihe5o4jped3o43jro.apps.googleusercontent.com
+
+# Client secret
+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
+

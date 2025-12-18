@@ -21,11 +21,13 @@
 
 export const environment = {
   production: false,
+  apiUrl: 'http://localhost:8000',
   videoGenerationApiURL: 'http://localhost:8000/api/video_generation',
   imageGenerationApiURL: 'http://localhost:8000/api/image_generation',
   textGenerationApiURL: 'http://localhost:8000/api/text_generation',
   fileUploaderApiURL: 'http://localhost:8000/api/file_uploader',
   storiesStorageApiURL: 'http://localhost:8000/api/story_storage',
   proxyURL: 'http://localhost:8000',
-  clientID: 'YOUR_GOOGLE_CLIENT_ID'
+  googleClientId: '149502000854-r79ufev4eqe1r5pihe5o4jped3o43jro.apps.googleusercontent.com',
+  clientID: '149502000854-r79ufev4eqe1r5pihe5o4jped3o43jro.apps.googleusercontent.com'
 };

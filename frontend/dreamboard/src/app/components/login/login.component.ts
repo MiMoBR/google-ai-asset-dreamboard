@@ -46,7 +46,7 @@ export class LoginComponent {
   ) {}
 
   ngOnInit(): void {
-    this.initializeGoogleSignIn();
+    //this.initializeGoogleSignIn();
   }
 
   initializeGoogleSignIn(): void {
