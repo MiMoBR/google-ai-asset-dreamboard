@@ -34,35 +34,24 @@ export class StoriesStorageService {
   constructor(private http: HttpClient) {}
 
   addNewStory(userId: string, newStory: VideoStory): any {
-    const requestBody = {
-      url: `${this.BASE_URL}/save_story/${userId}`,
-      options: { method: 'POST', data: newStory },
-    };
-    return this.http.post<any[]>(
-      `${this.PROXY_URL}/api/handleRequest`,
-      requestBody
+    // Direct API call for local development (no proxy)
+    return this.http.post<any>(
+      `${this.BASE_URL}/save_story/${userId}`,
+      newStory
     );
   }
 
   getStoriesByUserId(userId: string): any {
-    const requestBody = {
-      url: `${this.BASE_URL}/list_all_stories/${userId}`,
-      options: { method: 'GET' },
-    };
-    return this.http.post<any[]>(
-      `${this.PROXY_URL}/api/handleRequest`,
-      requestBody
+    // Direct API call for local development (no proxy)
+    return this.http.get<any[]>(
+      `${this.BASE_URL}/list_all_stories/${userId}`
     );
   }
 
   deleteStoryById(userId: string, storyId: string): any {
-    const requestBody = {
-      url: `${this.BASE_URL}/remove_story/${userId}/${storyId}`,
-      options: { method: 'DELETE' },
-    };
-    return this.http.post<any[]>(
-      `${this.PROXY_URL}/api/handleRequest`,
-      requestBody
+    // Direct API call for local development (no proxy)
+    return this.http.delete<any>(
+      `${this.BASE_URL}/remove_story/${userId}/${storyId}`
     );
   }
 }
