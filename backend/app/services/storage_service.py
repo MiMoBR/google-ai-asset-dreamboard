@@ -195,19 +195,41 @@ class StorageService:
     Returns:
         str: A signed URL valid for a week (v4 limit) (10080 minutes).
     """
-    credentials, _ = google.auth.default()
-    credentials.refresh(google.auth.transport.requests.Request())
-    blob = self.bucket.blob(blob_name)
-    # Sign URL
-    url = blob.generate_signed_url(
-        version="v4",
-        expiration=datetime.timedelta(minutes=10080),
-        service_account_email=credentials.service_account_email,
-        access_token=credentials.token,
-        method="GET",
-    )
-    logging.info("Signed URI: %s", url)
-    return url
+    try:
+        credentials, _ = google.auth.default()
+
+        # Check if credentials have service_account_email (production)
+        if hasattr(credentials, 'service_account_email'):
+            credentials.refresh(google.auth.transport.requests.Request())
+            blob = self.bucket.blob(blob_name)
+            # Sign URL with service account
+            url = blob.generate_signed_url(
+                version="v4",
+                expiration=datetime.timedelta(minutes=10080),
+                service_account_email=credentials.service_account_email,
+                access_token=credentials.token,
+                method="GET",
+            )
+        else:
+            # For local development with user credentials,
+            # return public URL instead of signed URL
+            logging.warning(
+                "Using public URL for local development. "
+                "Signed URLs require service account credentials."
+            )
+            blob = self.bucket.blob(blob_name)
+            # Make blob publicly accessible
+            blob.make_public()
+            url = blob.public_url
+
+        logging.info("Generated URL: %s", url)
+        return url
+    except Exception as e:
+        logging.error("Error generating URL: %s", str(e))
+        # Fallback to public URL
+        blob = self.bucket.blob(blob_name)
+        blob.make_public()
+        return blob.public_url
 
 
 storage_service = StorageService()

@@ -36,5 +36,5 @@ export const routes: Routes = [
     component: StoryboardComponent,
     canActivate: [AuthGuardStoryboardService],
   },
-  { path: '**', redirectTo: '/storyboard', pathMatch: 'full' },
+  { path: '**', redirectTo: '/login', pathMatch: 'full' },
 ];

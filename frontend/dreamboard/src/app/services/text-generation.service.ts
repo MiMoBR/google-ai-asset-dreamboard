@@ -38,24 +38,18 @@ export class TextGenerationService {
   constructor(private http: HttpClient) {}
 
   generateStories(storiesGeneration: StoriesGenerationRequest): any {
-    const requestBody = {
-      url: `${this.BASE_URL}/brainstorm_stories`,
-      options: { method: 'POST', data: storiesGeneration },
-    };
+    // Direct API call for local development (no proxy)
     return this.http.post<any[]>(
-      `${this.PROXY_URL}/api/handleRequest`,
-      requestBody
+      `${this.BASE_URL}/brainstorm_stories`,
+      storiesGeneration
     );
   }
 
   generateScenes(scenesGeneration: ScenesGenerationRequest): any {
-    const requestBody = {
-      url: `${this.BASE_URL}/brainstorm_scenes`,
-      options: { method: 'POST', data: scenesGeneration },
-    };
+    // Direct API call for local development (no proxy)
     return this.http.post<any[]>(
-      `${this.PROXY_URL}/api/handleRequest`,
-      requestBody
+      `${this.BASE_URL}/brainstorm_scenes`,
+      scenesGeneration
     );
   }
 
@@ -64,33 +58,16 @@ export class TextGenerationService {
     scene_description: string,
     withSceneDescription: boolean
   ): any {
-    // Change Endpoints because prompts are different
+    // Direct API call for local development (no proxy)
     if (withSceneDescription) {
-      const requestBody = {
-        url: `${this.BASE_URL}/enhance_image_prompt_with_scene`,
-        options: {
-          method: 'POST',
-          data: { prompt: prompt, scene: scene_description },
-        },
-      };
       return this.http.post<any>(
-        `${this.PROXY_URL}/api/handleRequest`,
-        requestBody
+        `${this.BASE_URL}/enhance_image_prompt_with_scene`,
+        { prompt: prompt, scene: scene_description }
       );
     } else {
-      const requestBody = {
-        url: `${this.BASE_URL}/enhance_image_prompt`,
-        options: {
-          method: 'POST',
-          data: {
-            prompt: prompt,
-            scene: scene_description,
-          },
-        },
-      };
       return this.http.post<any>(
-        `${this.PROXY_URL}/api/handleRequest`,
-        requestBody
+        `${this.BASE_URL}/enhance_image_prompt`,
+        { prompt: prompt, scene: scene_description }
       );
     }
   }
@@ -100,65 +77,33 @@ export class TextGenerationService {
     scene_description: string,
     withSceneDescription: boolean
   ): any {
-    // Change Endpoints because prompts are different
+    // Direct API call for local development (no proxy)
     if (withSceneDescription) {
-      const requestBody = {
-        url: `${this.BASE_URL}/enhance_video_prompt_with_scene`,
-        options: {
-          method: 'POST',
-          data: { prompt: prompt, scene: scene_description },
-        },
-      };
       return this.http.post<any>(
-        `${this.PROXY_URL}/api/handleRequest`,
-        requestBody
+        `${this.BASE_URL}/enhance_video_prompt_with_scene`,
+        { prompt: prompt, scene: scene_description }
       );
     } else {
-      const requestBody = {
-        url: `${this.BASE_URL}/enhance_video_prompt`,
-        options: {
-          method: 'POST',
-          data: {
-            prompt: prompt,
-            scene: scene_description,
-          },
-        },
-      };
       return this.http.post<any>(
-        `${this.PROXY_URL}/api/handleRequest`,
-        requestBody
+        `${this.BASE_URL}/enhance_video_prompt`,
+        { prompt: prompt, scene: scene_description }
       );
     }
   }
 
   rewriteBrainstormPrompt(idea: string): any {
-    const requestBody = {
-      url: `${this.BASE_URL}/rewrite_brainstorm_prompt`,
-      options: {
-        method: 'POST',
-        data: {
-          idea: idea,
-        },
-      },
-    };
+    // Direct API call for local development (no proxy)
     return this.http.post<any>(
-      `${this.PROXY_URL}/api/handleRequest`,
-      requestBody
+      `${this.BASE_URL}/rewrite_brainstorm_prompt`,
+      { idea: idea }
     );
   }
 
   extract_text_from_file(extract_text_request: ExtractTextItem): any {
-    // TODO(ae) TEST
-    const requestBody = {
-      url: `${this.BASE_URL}/extract_text_from_file`,
-      options: {
-        method: 'POST',
-        data: extract_text_request,
-      },
-    };
+    // Direct API call for local development (no proxy)
     return this.http.post<any>(
-      `${this.PROXY_URL}/api/handleRequest`,
-      requestBody
+      `${this.BASE_URL}/extract_text_from_file`,
+      extract_text_request
     );
   }
 }

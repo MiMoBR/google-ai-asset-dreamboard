@@ -40,24 +40,18 @@ export class VideoGenerationService {
     story_id: string,
     videoGeneration: VideoGenerationRequest
   ): any {
-    const requestBody = {
-      url: `${this.BASE_URL}/generate_videos_from_scenes/${story_id}`,
-      options: { method: 'POST', data: videoGeneration },
-    };
+    // Direct API call for local development (no proxy)
     return this.http.post<VideoGenerationResponse[]>(
-      `${this.PROXY_URL}/api/handleRequest`,
-      requestBody
+      `${this.BASE_URL}/generate_videos_from_scenes/${story_id}`,
+      videoGeneration
     );
   }
 
   mergeVideos(story_id: string, videoGeneration: VideoGenerationRequest) {
-    const requestBody = {
-      url: `${this.BASE_URL}/merge_videos/${story_id}`,
-      options: { method: 'POST', data: videoGeneration },
-    };
+    // Direct API call for local development (no proxy)
     return this.http.post<VideoGenerationResponse>(
-      `${this.PROXY_URL}/api/handleRequest`,
-      requestBody
+      `${this.BASE_URL}/merge_videos/${story_id}`,
+      videoGeneration
     );
   }
 }

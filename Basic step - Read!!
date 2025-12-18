@@ -24,3 +24,18 @@ uv run fastapi dev main.py
 # Client secret
 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
 
+
+# Backend
+uv run fastapi dev main.py
+
+# Front Server só por teste
+node server.js
+
+# Front Browser
+ng serve
+
+# Teste Serviços
+http://localhost:8000/docs
+
+# Teste Firestore Data:
+curl -X GET "http://localhost:8000/api/story_storage/list_all_stories/test-user-id"

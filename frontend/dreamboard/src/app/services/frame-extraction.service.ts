@@ -31,7 +31,6 @@ import { Image } from '../models/image-gen-models';
 })
 export class FrameExtractionService {
   private apiUrl = `${environment.videoGenerationApiURL}/extract_frames`;
-  private handleRequestUrl = `${environment.proxyURL}/api/handleRequest`;
 
   constructor(private http: HttpClient) {}
 
@@ -49,14 +48,8 @@ export class FrameExtractionService {
       time_sec,
       frame_count,
     };
-    const request = {
-      url: this.apiUrl,
-      options: {
-        method: 'POST',
-        data: body,
-      },
-    };
-    return this.http.post(this.handleRequestUrl, request).pipe(
+    // Direct API call for local development (no proxy)
+    return this.http.post(this.apiUrl, body).pipe(
       map((response: any) => {
         if (response.data && Array.isArray(response.data)) {
           response.data = response.data.map((image: any): Image => ({

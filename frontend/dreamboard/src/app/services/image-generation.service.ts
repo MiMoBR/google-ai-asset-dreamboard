@@ -37,29 +37,22 @@ export class ImageGenerationService {
     story_id: string,
     imageGeneration: ImageGenerationRequest
   ): any {
-    const requestBody = {
-      url: `${this.BASE_URL}/generate_image/${story_id}`,
-      options: { method: 'POST', data: imageGeneration },
-    };
+    // Direct API call for local development (no proxy)
     return this.http.post<any>(
-      `${this.PROXY_URL}/api/handleRequest`,
-      requestBody
+      `${this.BASE_URL}/generate_image/${story_id}`,
+      imageGeneration
     );
   }
 
   uploadImage(story_id: string, imageData: FormData): any {
-    // TODO (ae) check
-    const requestBody = {
-      url: `${this.BASE_URL}/upload_file/${story_id}`,
-      options: { method: 'POST', data: imageData },
-    };
-    /*  {
+    // Direct API call for local development (no proxy)
+    return this.http.post<any>(
+      `${this.BASE_URL}/upload_file/${story_id}`,
+      imageData,
+      {
         reportProgress: true,
         observe: 'events',
-      } */
-    return this.http.post<any>(
-      `${this.PROXY_URL}/api/handleFileUploadRequest`,
-      requestBody
+      }
     );
   }
 }
