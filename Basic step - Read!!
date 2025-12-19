@@ -14,6 +14,9 @@ pandas
 streamlit
 EOF
 
+# Requirement
+pip install -r requirements.txt
+
 #RUN Backend#
 uv run fastapi dev main.py
 
@@ -24,14 +27,17 @@ uv run fastapi dev main.py
 # Client secret
 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
 
-
 # Backend
+cd ~/Documents/workspace/dreamboard/backend/app
+source .venv/bin/activate
 uv run fastapi dev main.py
 
 # Front Server só por teste
+cd ~/Documents/workspace/dreamboard/frontend/server
 node server.js
 
 # Front Browser
+cd ~/Documents/workspace/dreamboard/frontend/dreamboard
 ng serve
 
 # Teste Serviços

@@ -46,7 +46,7 @@ def get_videos_bucket_base_path(story_id: str):
       A string representing the base GCS URI for video storage.
       Example: "gs://your-bucket-name/dreamboard/story_id_123/videos"
   """
-  return f"gs://{os.getenv("GCS_BUCKET")}/dreamboard/{story_id}/videos"
+  return f"gs://{os.getenv('GCS_BUCKET')}/dreamboard/{story_id}/videos"
 
 
 def get_videos_bucket_folder_path(story_id: str):
@@ -147,7 +147,7 @@ def get_videos_public_bucket_path(story_id: str):
   Returns:
       The public HTTP URL to access videos in the GCS bucket.
   """
-  return f"https://storage.googleapis.com/{os.getenv("GCS_BUCKET")}/dreamboard/{story_id}/videos"
+  return f"https://storage.googleapis.com/{os.getenv('GCS_BUCKET')}/dreamboard/{story_id}/videos"
 
 
 def get_scene_folder_path_from_uri(uri: str):
@@ -222,7 +222,7 @@ def get_images_bucket_base_path(story_id: str):
   Gets the base GCS bucket path for images.
   Includes a unique generation ID to identify images for each execution.
   """
-  return f"gs://{os.getenv("GCS_BUCKET")}/dreamboard/{story_id}/images"
+  return f"gs://{os.getenv('GCS_BUCKET')}/dreamboard/{story_id}/images"
 
 
 def get_images_bucket_folder_path(story_id: str):
@@ -248,7 +248,7 @@ def get_images_public_bucket_path(story_id: str):
   Returns:
       The public HTTP URL to access images in the GCS bucket.
   """
-  return f"https://storage.googleapis.com/{os.getenv("GCS_BUCKET")}/dreamboard/{story_id}/images"
+  return f"https://storage.googleapis.com/{os.getenv('GCS_BUCKET')}/dreamboard/{story_id}/images"
 
 
 def get_images_bucket_folder(story_id: str):
@@ -269,7 +269,7 @@ def get_images_bucket_path(story_id: str):
   Gets the full GCS bucket path for images.
   Includes a unique generation ID to identify images for each execution.
   """
-  return f"gs://{os.getenv("GCS_BUCKET")}/dreamboard/{story_id}/images"
+  return f"gs://{os.getenv('GCS_BUCKET')}/dreamboard/{story_id}/images"
 
 
 def get_images_local_path(story_id: str):
@@ -427,7 +427,7 @@ def get_blob_name_from_gcs_uri(gcs_uri: str) -> str:
   Returns:
       str: The name of the blob (e.g., 'object/name.txt').
   """
-  return gcs_uri.replace(f"gs://{os.getenv("GCS_BUCKET")}/", "")
+  return gcs_uri.replace(f"gs://{os.getenv('GCS_BUCKET')}/", "")
 
 
 def execute_tasks_in_parallel(tasks: list[any]) -> None:

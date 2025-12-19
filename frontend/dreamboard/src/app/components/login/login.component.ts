@@ -53,8 +53,9 @@ export class LoginComponent {
     window.google.accounts.id.initialize({
       client_id: environment.clientID,
       callback: (response: any) => this.handleCredentialResponse(response),
-      use_fedcm_for_prompt: true,
-      auto_select: true
+      use_fedcm_for_prompt: false,
+      auto_select: false,
+      cancel_on_tap_outside: false
     });
 
     // Render the Google Sign-In button (optional, if you're using the button)
